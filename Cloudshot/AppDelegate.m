@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "GeneralPreferencesViewController.h"
+#import "AdvancedPreferencesViewController.h"
+
 #import <MASPreferencesWindowController.h>
 #import "OwnCloudUploader.h"
 
@@ -32,13 +34,6 @@
     
     [menu addItem:[NSMenuItem separatorItem]];
     [menu addItemWithTitle:@"Quit Switcher" action:@selector(terminate:) keyEquivalent:@""];
-    
-    
-    if (![[NSUserDefaults standardUserDefaults] valueForKey:@"firstrun"]) {
-        [self openPreferences:nil];
-        [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"firstrun"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -54,6 +49,7 @@
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
     
     self.ownCloudUploader = [OwnCloudUploader new];
+    [self openPreferences:nil];
 
 }
 
@@ -68,6 +64,7 @@
 - (NSWindowController *)preferencesWindowController {
     if (_preferencesWindowController == nil) {
         NSViewController *generalViewController = [[GeneralPreferencesViewController alloc] init];
+        NSViewController *advancedViewController = [[AdvancedPreferencesViewController alloc] init];
         NSArray *controllers = @[generalViewController];
         NSString *title = @"Preferences";
         _preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:controllers title:title];

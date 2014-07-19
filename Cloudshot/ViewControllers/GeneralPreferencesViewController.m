@@ -43,7 +43,7 @@
 
 - (NSString *)toolbarItemLabel
 {
-    return NSLocalizedString(@"Account", @"Toolbar item name for the General preference pane");
+    return @"Account";
 }
 
 - (void)saveCredentials:(id)sender {

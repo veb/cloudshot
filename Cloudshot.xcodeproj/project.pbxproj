@@ -23,6 +23,8 @@
 		205FB97B197A974C005FE1B0 /* DAVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205FB972197A8EF7005FE1B0 /* DAVKit.framework */; };
 		205FB97F197A98B8005FE1B0 /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FB97D197A98B8005FE1B0 /* GeneralPreferencesViewController.m */; };
 		205FB980197A98B8005FE1B0 /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205FB97E197A98B8005FE1B0 /* GeneralPreferencesViewController.xib */; };
+		205FB986197AB2B3005FE1B0 /* AdvancedPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FB984197AB2B3005FE1B0 /* AdvancedPreferencesViewController.m */; };
+		205FB987197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205FB985197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,9 @@
 		205FB97C197A98B8005FE1B0 /* GeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeneralPreferencesViewController.h; path = ViewControllers/GeneralPreferencesViewController.h; sourceTree = "<group>"; };
 		205FB97D197A98B8005FE1B0 /* GeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeneralPreferencesViewController.m; path = ViewControllers/GeneralPreferencesViewController.m; sourceTree = "<group>"; };
 		205FB97E197A98B8005FE1B0 /* GeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GeneralPreferencesViewController.xib; path = ViewControllers/GeneralPreferencesViewController.xib; sourceTree = "<group>"; };
+		205FB983197AB2B3005FE1B0 /* AdvancedPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPreferencesViewController.h; sourceTree = "<group>"; };
+		205FB984197AB2B3005FE1B0 /* AdvancedPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPreferencesViewController.m; sourceTree = "<group>"; };
+		205FB985197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedPreferencesViewController.xib; sourceTree = "<group>"; };
 		65901C4041744AD2AC1B52FE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A5FD22C0024307BBB87033 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,6 +209,9 @@
 				205FB97C197A98B8005FE1B0 /* GeneralPreferencesViewController.h */,
 				205FB97D197A98B8005FE1B0 /* GeneralPreferencesViewController.m */,
 				205FB97E197A98B8005FE1B0 /* GeneralPreferencesViewController.xib */,
+				205FB983197AB2B3005FE1B0 /* AdvancedPreferencesViewController.h */,
+				205FB984197AB2B3005FE1B0 /* AdvancedPreferencesViewController.m */,
+				205FB985197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -314,6 +322,7 @@
 				205FB949197A8D37005FE1B0 /* Credits.rtf in Resources */,
 				205FB94F197A8D37005FE1B0 /* MainMenu.xib in Resources */,
 				205FB980197A98B8005FE1B0 /* GeneralPreferencesViewController.xib in Resources */,
+				205FB987197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205FB986197AB2B3005FE1B0 /* AdvancedPreferencesViewController.m in Sources */,
 				205FB97F197A98B8005FE1B0 /* GeneralPreferencesViewController.m in Sources */,
 				205FB94C197A8D37005FE1B0 /* AppDelegate.m in Sources */,
 				205FB945197A8D37005FE1B0 /* main.m in Sources */,
