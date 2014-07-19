@@ -44,7 +44,7 @@
 
 - (void)request:(DAVRequest *)aRequest didFailWithError:(NSError *)error
 {
-    NSLog(@"%@", error);
+    [self pasteoutError:error];
 }
 
 // The resulting object varies depending on the request type
@@ -89,16 +89,28 @@
                 }
                 
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"Error: %@", error);
+                [self pasteoutError:error];
             }];
             
         }];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
+        [self pasteoutError:error];
     }];
 }
 
+
+- (void)pasteoutError:(NSError *)error {
+    NSUserNotification *successNotification = [[NSUserNotification alloc] init];
+    successNotification.title = @"Cloudshot ERROR";
+    successNotification.informativeText = @"Something happened! Error pasted to clipboard";
+    successNotification.soundName = NSUserNotificationDefaultSoundName;
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:successNotification];
+    
+    NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
+    [pasteBoard declareTypes:@[NSStringPboardType] owner:nil];
+    [pasteBoard setString:error.description forType:NSStringPboardType];
+}
 
 - (void)requestDidBegin:(DAVRequest *)aRequest{
     

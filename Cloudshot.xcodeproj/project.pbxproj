@@ -25,6 +25,7 @@
 		205FB980197A98B8005FE1B0 /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205FB97E197A98B8005FE1B0 /* GeneralPreferencesViewController.xib */; };
 		205FB986197AB2B3005FE1B0 /* AdvancedPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FB984197AB2B3005FE1B0 /* AdvancedPreferencesViewController.m */; };
 		205FB987197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205FB985197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib */; };
+		205FB98D197AB7AE005FE1B0 /* DAVKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 205FB972197A8EF7005FE1B0 /* DAVKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,27 @@
 			remoteGlobalIDString = C9FF77EC121C6F51001250C7;
 			remoteInfo = Tests;
 		};
+		205FB98A197AB6A9005FE1B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 205FB96C197A8EF6005FE1B0 /* DAVKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = DAVKit;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		205FB98C197AB79F005FE1B0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				205FB98D197AB7AE005FE1B0 /* DAVKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		205FB935197A8D37005FE1B0 /* Cloudshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cloudshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,10 +249,12 @@
 				205FB932197A8D37005FE1B0 /* Frameworks */,
 				205FB933197A8D37005FE1B0 /* Resources */,
 				E29786DCB4904B518E5E4C2E /* Copy Pods Resources */,
+				205FB98C197AB79F005FE1B0 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				205FB98B197AB6A9005FE1B0 /* PBXTargetDependency */,
 			);
 			name = Cloudshot;
 			productName = Cloudshot;
@@ -397,6 +420,11 @@
 			isa = PBXTargetDependency;
 			target = 205FB934197A8D37005FE1B0 /* Cloudshot */;
 			targetProxy = 205FB95A197A8D37005FE1B0 /* PBXContainerItemProxy */;
+		};
+		205FB98B197AB6A9005FE1B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DAVKit;
+			targetProxy = 205FB98A197AB6A9005FE1B0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
