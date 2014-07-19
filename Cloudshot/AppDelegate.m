@@ -29,6 +29,16 @@
     NSMenu *menu = [[NSMenu alloc] init];
     [menu addItemWithTitle:@"Preferences" action:@selector(openPreferences:) keyEquivalent:@""];
     _statusItem.menu = menu;
+    
+    [menu addItem:[NSMenuItem separatorItem]];
+    [menu addItemWithTitle:@"Quit Switcher" action:@selector(terminate:) keyEquivalent:@""];
+    
+    
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:@"firstrun"]) {
+        [self openPreferences:nil];
+        [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"firstrun"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
