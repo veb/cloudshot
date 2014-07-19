@@ -18,19 +18,25 @@ PODS:
   - AFNetworking/Security (2.3.1)
   - AFNetworking/Serialization (2.3.1)
   - Base64 (1.0.1)
+  - FXKeychain (1.5.1)
+  - MASPreferences (1.1)
   - RaptureXML (1.0.1)
-  - RFKeychain (0.1)
+  - RHPreferences (1.0.0)
 
 DEPENDENCIES:
   - AFNetworking
   - Base64 (~> 1.0)
+  - FXKeychain
+  - MASPreferences (~> 1.1)
   - RaptureXML (~> 1.0)
-  - RFKeychain
+  - RHPreferences (~> 1.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   Base64: c6d74f31f150543b246a07e180ba813c88e59311
+  FXKeychain: beb642a4218ba783507af08865eda05e9b26a612
+  MASPreferences: 971d03da4b3818f8ea0d0ef10b86b02b2c052d17
   RaptureXML: b9b0aca9c68c684c189af73dd5e8f8fdeec74600
-  RFKeychain: b86238477be053f540916c5e69da625a4adf6951
+  RHPreferences: d0215102b7b8cd9f501655e5e7db2551ef4dc0e5
 
 COCOAPODS: 0.33.1

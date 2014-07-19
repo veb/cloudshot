@@ -8,8 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate, NSMetadataQueryDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (nonatomic, strong) NSArray *queryResults;
+@property (strong, nonatomic) NSStatusItem *statusItem;
+@property (assign) IBOutlet NSMenu *statusMenu;
+
+@property (nonatomic, strong) NSWindowController *preferencesWindowController;
+
+@property (nonatomic) NSInteger focusedAdvancedControlIndex;
+- (IBAction)openPreferences:(id)sender;
+
+
 
 @end
