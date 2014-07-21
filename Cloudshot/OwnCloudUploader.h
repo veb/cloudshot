@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UploaderStub.h"
 
-@interface OwnCloudUploader : NSObject
-- (void)uploadImageToOwnCloud:(NSString *)imagePath imageName:(NSString *)destImageName;
+@interface OwnCloudUploader : UploaderStub
 @end

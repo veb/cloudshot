@@ -8,6 +8,7 @@
 
 #import "GeneralPreferencesViewController.h"
 #import <FXKeychain.h>
+
 @interface GeneralPreferencesViewController ()
 
 @end
@@ -47,17 +48,21 @@
 }
 
 - (void)saveCredentials:(id)sender {
-    [FXKeychain defaultKeychain][@"baseurl_owncloud"] = self.txtServerURL.stringValue;
-    [FXKeychain defaultKeychain][@"username_owncloud"] = self.txtUsername.stringValue;
-    [FXKeychain defaultKeychain][@"password_owncloud"] = self.txtPassword.stringValue;
-    [FXKeychain defaultKeychain][@"remotepath_owncloud"] = self.txtRemotePath.stringValue;
+    [FXKeychain defaultKeychain][@"owncloud_cred"] = @{@"baseurl"   :self.txtServerURL.stringValue,
+                                                       @"username"  :self.txtUsername.stringValue,
+                                                       @"password"  :self.txtPassword.stringValue,
+                                                       @"remotepath":self.txtRemotePath.stringValue};
+    
 }
 
 - (void)awakeFromNib {
-    self.txtServerURL.stringValue = [FXKeychain defaultKeychain][@"baseurl_owncloud"]?:@"";
-    self.txtUsername.stringValue = [FXKeychain defaultKeychain][@"username_owncloud"]?:@"";
-    self.txtPassword.stringValue = [FXKeychain defaultKeychain][@"password_owncloud"]?:@"";
-    self.txtRemotePath.stringValue = [FXKeychain defaultKeychain][@"remotepath_owncloud"]?:@"";
+    NSDictionary *owncloudCred = [FXKeychain defaultKeychain][@"owncloud_cred"];
+    
+    self.txtServerURL.stringValue = owncloudCred[@"baseurl"];
+    self.txtUsername.stringValue = owncloudCred[@"username"];
+    self.txtPassword.stringValue = owncloudCred[@"password"];
+    self.txtRemotePath.stringValue = owncloudCred[@"remotepath"];
 }
+
 
 @end

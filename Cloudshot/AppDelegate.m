@@ -25,7 +25,7 @@
     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     
     [self.statusItem setMenu:self.statusMenu];
-    [self.statusItem setTitle:@"Cloudshot"];
+    [self.statusItem setImage:[NSImage imageNamed:@"cloud"]];
     [self.statusItem setHighlightMode:YES];
     
     NSMenu *menu = [[NSMenu alloc] init];
@@ -100,7 +100,14 @@ NSString *const kFocusedAdvancedControlIndex = @"FocusedAdvancedControlIndex";
         if (!self.ownCloudUploader) {
             self.ownCloudUploader = [OwnCloudUploader new];
         }
-        [self.ownCloudUploader uploadImageToOwnCloud:[item valueForAttribute:NSMetadataItemPathKey] imageName:[item valueForKey:NSMetadataItemFSNameKey]];
+        
+        [self.statusItem setImage:[NSImage imageNamed:@"clouduploading"]];
+        [self.ownCloudUploader uploadImageToCloud:[item valueForAttribute:NSMetadataItemPathKey] imageName:[item valueForKey:NSMetadataItemFSNameKey] withCompletionBlock:^(NSString *shortenedURL) {
+            [self.statusItem setImage:[NSImage imageNamed:@"cloudsuccess"]];
+        } errorBlock:^(NSError *error) {
+            [self.statusItem setImage:[NSImage imageNamed:@"clouderror"]];
+        }];
+
     }
 }
 

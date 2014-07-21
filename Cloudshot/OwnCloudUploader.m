@@ -20,46 +20,59 @@
 
 @implementation OwnCloudUploader
 
-- (void)uploadImageToOwnCloud:(NSString *)imagePath imageName:(NSString *)destImageName{
-    NSString *username = [FXKeychain defaultKeychain][@"username_owncloud"]?:@"";
-    NSString *password = [FXKeychain defaultKeychain][@"password_owncloud"]?:@"";
-    NSString *baseURL = [FXKeychain defaultKeychain][@"baseurl_owncloud"]?:@"";
+- (void)uploadImageToCloud:(NSString *)imagePath imageName:(NSString *)destImageName withCompletionBlock:(CompletionBlock)completionBlock errorBlock:(ErrorBlock)errorBlock {
     
+    [super uploadImageToCloud:imagePath imageName:destImageName withCompletionBlock:completionBlock errorBlock:errorBlock];
+    
+    NSDictionary *owncloudCred = [FXKeychain defaultKeychain][@"owncloud_cred"];
+    
+    NSString *baseURL = owncloudCred[@"baseurl"];
+    NSString *username = owncloudCred[@"username"];
+    NSString *password = owncloudCred[@"password"];
+    NSString *remotePath = owncloudCred[@"remotepath"];
+
     
     DAVCredentials  *credentials = [[DAVCredentials alloc] initWithUsername:username
                                                                    password:password];
     
-    NSURL *davURL = [NSURL URLWithString:[baseURL stringByAppendingString:@"/remote.php/webdav"]];
+    NSURL *davURL = [NSURL URLWithString:[baseURL stringByAppendingString:@"/remote.php/webdav/"]];
     _davSession = [[DAVSession alloc] initWithRootURL:davURL credentials:credentials];
     _davSession.allowUntrustedCertificate = YES;
     
     NSData *fileContent = [NSData dataWithContentsOfFile:imagePath];
     
-    DAVPutRequest *putRequest = [[DAVPutRequest alloc] initWithPath:destImageName];
+    DAVPutRequest *putRequest = [[DAVPutRequest alloc] initWithPath:[NSString stringWithFormat:@"%@/%@", remotePath, destImageName]];
     putRequest.data = fileContent;
     putRequest.delegate = self;
+
     [_davSession enqueueRequest:putRequest];
+    
 }
 
 
 - (void)request:(DAVRequest *)aRequest didFailWithError:(NSError *)error
 {
     [self pasteoutError:error];
+
 }
 
 // The resulting object varies depending on the request type
 - (void)request:(DAVRequest *)aRequest didSucceedWithResult:(id)result
 {
-    NSString *username = [FXKeychain defaultKeychain][@"username_owncloud"]?:@"";
-    NSString *password = [FXKeychain defaultKeychain][@"password_owncloud"]?:@"";
-    NSString *baseURL = [FXKeychain defaultKeychain][@"baseurl_owncloud"]?:@"";
-
+    NSDictionary *owncloudCred = [FXKeychain defaultKeychain][@"owncloud_cred"];
+    
+    NSString *baseURL = owncloudCred[@"baseurl"];
+    NSString *username = owncloudCred[@"username"];
+    NSString *password = owncloudCred[@"password"];
+    NSString *remotePath = owncloudCred[@"remotepath"];
+    
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
     [manager setResponseSerializer:[AFHTTPResponseSerializer serializer]];
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
     NSDictionary *params = @{
-                             @"path" : [@"/" stringByAppendingString:aRequest.path],
+                             @"path" : [NSString stringWithFormat:@"%@", aRequest.path],
                              @"shareType" : [NSNumber numberWithInt:3]
                              };
     
@@ -85,6 +98,7 @@
                     successNotification.informativeText = @"The link has been copied to your clipboard";
                     successNotification.soundName = NSUserNotificationDefaultSoundName;
                     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:successNotification];
+                    self.completionBlock(tinyURL);
                     
                 }
                 
@@ -110,6 +124,9 @@
     NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
     [pasteBoard declareTypes:@[NSStringPboardType] owner:nil];
     [pasteBoard setString:error.description forType:NSStringPboardType];
+    
+    self.errorBlock(error);
+    
 }
 
 - (void)requestDidBegin:(DAVRequest *)aRequest{

@@ -26,6 +26,8 @@
 		205FB986197AB2B3005FE1B0 /* AdvancedPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FB984197AB2B3005FE1B0 /* AdvancedPreferencesViewController.m */; };
 		205FB987197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205FB985197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib */; };
 		205FB98D197AB7AE005FE1B0 /* DAVKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 205FB972197A8EF7005FE1B0 /* DAVKit.framework */; };
+		205FB990197B841B005FE1B0 /* OwnCloudDavUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FB98F197B841B005FE1B0 /* OwnCloudDavUtils.m */; };
+		205FB995197D1A60005FE1B0 /* UploaderStub.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FB994197D1A60005FE1B0 /* UploaderStub.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,10 @@
 		205FB983197AB2B3005FE1B0 /* AdvancedPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPreferencesViewController.h; sourceTree = "<group>"; };
 		205FB984197AB2B3005FE1B0 /* AdvancedPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPreferencesViewController.m; sourceTree = "<group>"; };
 		205FB985197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedPreferencesViewController.xib; sourceTree = "<group>"; };
+		205FB98E197B841B005FE1B0 /* OwnCloudDavUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwnCloudDavUtils.h; sourceTree = "<group>"; };
+		205FB98F197B841B005FE1B0 /* OwnCloudDavUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwnCloudDavUtils.m; sourceTree = "<group>"; };
+		205FB993197D1A60005FE1B0 /* UploaderStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploaderStub.h; sourceTree = "<group>"; };
+		205FB994197D1A60005FE1B0 /* UploaderStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploaderStub.m; sourceTree = "<group>"; };
 		65901C4041744AD2AC1B52FE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A5FD22C0024307BBB87033 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,14 +179,18 @@
 		205FB93E197A8D37005FE1B0 /* Cloudshot */ = {
 			isa = PBXGroup;
 			children = (
-				205FB981197A98CE005FE1B0 /* ViewControllers */,
 				205FB94A197A8D37005FE1B0 /* AppDelegate.h */,
 				205FB94B197A8D37005FE1B0 /* AppDelegate.m */,
-				205FB94D197A8D37005FE1B0 /* MainMenu.xib */,
 				205FB950197A8D37005FE1B0 /* Images.xcassets */,
-				205FB93F197A8D37005FE1B0 /* Supporting Files */,
+				205FB94D197A8D37005FE1B0 /* MainMenu.xib */,
+				205FB98E197B841B005FE1B0 /* OwnCloudDavUtils.h */,
+				205FB98F197B841B005FE1B0 /* OwnCloudDavUtils.m */,
+				205FB993197D1A60005FE1B0 /* UploaderStub.h */,
+				205FB994197D1A60005FE1B0 /* UploaderStub.m */,
 				205FB975197A8F4E005FE1B0 /* OwnCloudUploader.h */,
 				205FB976197A8F4E005FE1B0 /* OwnCloudUploader.m */,
+				205FB93F197A8D37005FE1B0 /* Supporting Files */,
+				205FB981197A98CE005FE1B0 /* ViewControllers */,
 			);
 			path = Cloudshot;
 			sourceTree = "<group>";
@@ -397,7 +407,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205FB990197B841B005FE1B0 /* OwnCloudDavUtils.m in Sources */,
 				205FB986197AB2B3005FE1B0 /* AdvancedPreferencesViewController.m in Sources */,
+				205FB995197D1A60005FE1B0 /* UploaderStub.m in Sources */,
 				205FB97F197A98B8005FE1B0 /* GeneralPreferencesViewController.m in Sources */,
 				205FB94C197A8D37005FE1B0 /* AppDelegate.m in Sources */,
 				205FB945197A8D37005FE1B0 /* main.m in Sources */,
