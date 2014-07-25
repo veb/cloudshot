@@ -89,17 +89,8 @@
             [manager GET:@"http://veb.co.nz/url/api.php" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 if (responseObject) {
                     NSString *tinyURL = responseObject[@"shorturl"];
-                    NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
-                    [pasteBoard declareTypes:@[NSStringPboardType] owner:nil];
-                    [pasteBoard setString:tinyURL forType:NSStringPboardType];
-                    
-                    NSUserNotification *successNotification = [[NSUserNotification alloc] init];
-                    successNotification.title = @"Cloudshot";
-                    successNotification.informativeText = @"The link has been copied to your clipboard";
-                    successNotification.soundName = NSUserNotificationDefaultSoundName;
-                    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:successNotification];
+                    [self createShotWithThumbPath:self.localThumbnailPath localImageName:self.localName remotePath:tinyURL];
                     self.completionBlock(tinyURL);
-                    
                 }
                 
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -115,16 +106,6 @@
 
 
 - (void)pasteoutError:(NSError *)error {
-    NSUserNotification *successNotification = [[NSUserNotification alloc] init];
-    successNotification.title = @"Cloudshot ERROR";
-    successNotification.informativeText = @"Something happened! Error pasted to clipboard";
-    successNotification.soundName = NSUserNotificationDefaultSoundName;
-    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:successNotification];
-    
-    NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
-    [pasteBoard declareTypes:@[NSStringPboardType] owner:nil];
-    [pasteBoard setString:error.description forType:NSStringPboardType];
-    
     self.errorBlock(error);
     
 }

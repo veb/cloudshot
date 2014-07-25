@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_FXKeychain 5
 #define COCOAPODS_VERSION_PATCH_FXKeychain 1
 
+// ImgurSession
+#define COCOAPODS_POD_AVAILABLE_ImgurSession
+#define COCOAPODS_VERSION_MAJOR_ImgurSession 1
+#define COCOAPODS_VERSION_MINOR_ImgurSession 2
+#define COCOAPODS_VERSION_PATCH_ImgurSession 0
+
 // MASPreferences
 #define COCOAPODS_POD_AVAILABLE_MASPreferences
 #define COCOAPODS_VERSION_MAJOR_MASPreferences 1

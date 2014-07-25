@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1750F21FF440447BA9FF7C07 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65901C4041744AD2AC1B52FE /* libPods.a */; };
+		202EA80919822BF3007DAFFC /* ImgurUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 202EA80819822BF3007DAFFC /* ImgurUploader.m */; };
 		205FB939197A8D37005FE1B0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205FB938197A8D37005FE1B0 /* Cocoa.framework */; };
 		205FB943197A8D37005FE1B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 205FB941197A8D37005FE1B0 /* InfoPlist.strings */; };
 		205FB945197A8D37005FE1B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FB944197A8D37005FE1B0 /* main.m */; };
@@ -27,7 +28,11 @@
 		205FB987197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205FB985197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib */; };
 		205FB98D197AB7AE005FE1B0 /* DAVKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 205FB972197A8EF7005FE1B0 /* DAVKit.framework */; };
 		205FB990197B841B005FE1B0 /* OwnCloudDavUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FB98F197B841B005FE1B0 /* OwnCloudDavUtils.m */; };
-		205FB995197D1A60005FE1B0 /* UploaderStub.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FB994197D1A60005FE1B0 /* UploaderStub.m */; };
+		205FB99E1980F281005FE1B0 /* NSImage+ProportionalScaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FB99D1980F281005FE1B0 /* NSImage+ProportionalScaling.m */; };
+		205FB9A11980F4E9005FE1B0 /* NSImage+FileSave.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FB9A01980F4E9005FE1B0 /* NSImage+FileSave.m */; };
+		205FB9A41980F53C005FE1B0 /* UploaderStub.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FB9A31980F53C005FE1B0 /* UploaderStub.m */; };
+		209C1E1F19826F1D0036BB35 /* PydioUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 209C1E1E19826F1D0036BB35 /* PydioUploader.m */; };
+		209ED2E71980FF7100CE69AE /* Shot.m in Sources */ = {isa = PBXBuildFile; fileRef = 209ED2E61980FF7100CE69AE /* Shot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +80,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		202EA80719822BF3007DAFFC /* ImgurUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgurUploader.h; sourceTree = "<group>"; };
+		202EA80819822BF3007DAFFC /* ImgurUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgurUploader.m; sourceTree = "<group>"; };
 		205FB935197A8D37005FE1B0 /* Cloudshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cloudshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		205FB938197A8D37005FE1B0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		205FB93B197A8D37005FE1B0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -105,8 +112,16 @@
 		205FB985197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedPreferencesViewController.xib; sourceTree = "<group>"; };
 		205FB98E197B841B005FE1B0 /* OwnCloudDavUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwnCloudDavUtils.h; sourceTree = "<group>"; };
 		205FB98F197B841B005FE1B0 /* OwnCloudDavUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwnCloudDavUtils.m; sourceTree = "<group>"; };
-		205FB993197D1A60005FE1B0 /* UploaderStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploaderStub.h; sourceTree = "<group>"; };
-		205FB994197D1A60005FE1B0 /* UploaderStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploaderStub.m; sourceTree = "<group>"; };
+		205FB99C1980F281005FE1B0 /* NSImage+ProportionalScaling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+ProportionalScaling.h"; sourceTree = "<group>"; };
+		205FB99D1980F281005FE1B0 /* NSImage+ProportionalScaling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+ProportionalScaling.m"; sourceTree = "<group>"; };
+		205FB99F1980F4E9005FE1B0 /* NSImage+FileSave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+FileSave.h"; sourceTree = "<group>"; };
+		205FB9A01980F4E9005FE1B0 /* NSImage+FileSave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+FileSave.m"; sourceTree = "<group>"; };
+		205FB9A21980F53C005FE1B0 /* UploaderStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploaderStub.h; sourceTree = "<group>"; };
+		205FB9A31980F53C005FE1B0 /* UploaderStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploaderStub.m; sourceTree = "<group>"; };
+		209C1E1D19826F1D0036BB35 /* PydioUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PydioUploader.h; sourceTree = "<group>"; };
+		209C1E1E19826F1D0036BB35 /* PydioUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PydioUploader.m; sourceTree = "<group>"; };
+		209ED2E51980FF7100CE69AE /* Shot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shot.h; sourceTree = "<group>"; };
+		209ED2E61980FF7100CE69AE /* Shot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shot.m; sourceTree = "<group>"; };
 		65901C4041744AD2AC1B52FE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A5FD22C0024307BBB87033 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +149,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		202EA80519811C1F007DAFFC /* OwnCloud */ = {
+			isa = PBXGroup;
+			children = (
+				205FB98E197B841B005FE1B0 /* OwnCloudDavUtils.h */,
+				205FB98F197B841B005FE1B0 /* OwnCloudDavUtils.m */,
+				205FB975197A8F4E005FE1B0 /* OwnCloudUploader.h */,
+				205FB976197A8F4E005FE1B0 /* OwnCloudUploader.m */,
+			);
+			name = OwnCloud;
+			sourceTree = "<group>";
+		};
+		202EA80619811C29007DAFFC /* Imgur */ = {
+			isa = PBXGroup;
+			children = (
+				202EA80719822BF3007DAFFC /* ImgurUploader.h */,
+				202EA80819822BF3007DAFFC /* ImgurUploader.m */,
+			);
+			name = Imgur;
+			sourceTree = "<group>";
+		};
 		205FB92C197A8D37005FE1B0 = {
 			isa = PBXGroup;
 			children = (
@@ -179,16 +214,15 @@
 		205FB93E197A8D37005FE1B0 /* Cloudshot */ = {
 			isa = PBXGroup;
 			children = (
+				209C1E1B19826EDF0036BB35 /* Pydio */,
+				202EA80619811C29007DAFFC /* Imgur */,
+				205FB99A1980F1C0005FE1B0 /* ImageProcessing */,
+				205FB9961980E443005FE1B0 /* ShotOrganizer */,
 				205FB94A197A8D37005FE1B0 /* AppDelegate.h */,
 				205FB94B197A8D37005FE1B0 /* AppDelegate.m */,
 				205FB950197A8D37005FE1B0 /* Images.xcassets */,
 				205FB94D197A8D37005FE1B0 /* MainMenu.xib */,
-				205FB98E197B841B005FE1B0 /* OwnCloudDavUtils.h */,
-				205FB98F197B841B005FE1B0 /* OwnCloudDavUtils.m */,
-				205FB993197D1A60005FE1B0 /* UploaderStub.h */,
-				205FB994197D1A60005FE1B0 /* UploaderStub.m */,
-				205FB975197A8F4E005FE1B0 /* OwnCloudUploader.h */,
-				205FB976197A8F4E005FE1B0 /* OwnCloudUploader.m */,
+				202EA80519811C1F007DAFFC /* OwnCloud */,
 				205FB93F197A8D37005FE1B0 /* Supporting Files */,
 				205FB981197A98CE005FE1B0 /* ViewControllers */,
 			);
@@ -245,6 +279,37 @@
 				205FB985197AB2B3005FE1B0 /* AdvancedPreferencesViewController.xib */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		205FB9961980E443005FE1B0 /* ShotOrganizer */ = {
+			isa = PBXGroup;
+			children = (
+				209ED2E51980FF7100CE69AE /* Shot.h */,
+				209ED2E61980FF7100CE69AE /* Shot.m */,
+				205FB9A21980F53C005FE1B0 /* UploaderStub.h */,
+				205FB9A31980F53C005FE1B0 /* UploaderStub.m */,
+			);
+			path = ShotOrganizer;
+			sourceTree = "<group>";
+		};
+		205FB99A1980F1C0005FE1B0 /* ImageProcessing */ = {
+			isa = PBXGroup;
+			children = (
+				205FB99C1980F281005FE1B0 /* NSImage+ProportionalScaling.h */,
+				205FB99D1980F281005FE1B0 /* NSImage+ProportionalScaling.m */,
+				205FB99F1980F4E9005FE1B0 /* NSImage+FileSave.h */,
+				205FB9A01980F4E9005FE1B0 /* NSImage+FileSave.m */,
+			);
+			path = ImageProcessing;
+			sourceTree = "<group>";
+		};
+		209C1E1B19826EDF0036BB35 /* Pydio */ = {
+			isa = PBXGroup;
+			children = (
+				209C1E1D19826F1D0036BB35 /* PydioUploader.h */,
+				209C1E1E19826F1D0036BB35 /* PydioUploader.m */,
+			);
+			name = Pydio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,11 +474,16 @@
 			files = (
 				205FB990197B841B005FE1B0 /* OwnCloudDavUtils.m in Sources */,
 				205FB986197AB2B3005FE1B0 /* AdvancedPreferencesViewController.m in Sources */,
-				205FB995197D1A60005FE1B0 /* UploaderStub.m in Sources */,
 				205FB97F197A98B8005FE1B0 /* GeneralPreferencesViewController.m in Sources */,
+				202EA80919822BF3007DAFFC /* ImgurUploader.m in Sources */,
+				209C1E1F19826F1D0036BB35 /* PydioUploader.m in Sources */,
+				205FB99E1980F281005FE1B0 /* NSImage+ProportionalScaling.m in Sources */,
 				205FB94C197A8D37005FE1B0 /* AppDelegate.m in Sources */,
 				205FB945197A8D37005FE1B0 /* main.m in Sources */,
+				209ED2E71980FF7100CE69AE /* Shot.m in Sources */,
+				205FB9A41980F53C005FE1B0 /* UploaderStub.m in Sources */,
 				205FB977197A8F4E005FE1B0 /* OwnCloudUploader.m in Sources */,
+				205FB9A11980F4E9005FE1B0 /* NSImage+FileSave.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

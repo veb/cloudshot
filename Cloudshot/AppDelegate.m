@@ -12,10 +12,17 @@
 
 #import <MASPreferencesWindowController.h>
 #import "OwnCloudUploader.h"
+#import "ImgurUploader.h"
+
+#import "ShotOrganizer/Shot.h"
+
+#import <ImgurSession.h>
 
 @interface AppDelegate ()
 @property (nonatomic, strong)NSMetadataQuery *query;
-@property (nonatomic, strong)OwnCloudUploader *ownCloudUploader;
+@property (nonatomic, strong)UploaderStub *ownCloudUploader;
+
+
 
 @end
 
@@ -28,16 +35,16 @@
     [self.statusItem setImage:[NSImage imageNamed:@"cloud"]];
     [self.statusItem setHighlightMode:YES];
     
-    NSMenu *menu = [[NSMenu alloc] init];
-    [menu addItemWithTitle:@"Preferences" action:@selector(openPreferences:) keyEquivalent:@""];
-    _statusItem.menu = menu;
+    self.statusMenu = [[NSMenu alloc] init];
+    _statusItem.menu = self.statusMenu;
     
-    [menu addItem:[NSMenuItem separatorItem]];
-    [menu addItemWithTitle:@"Quit Switcher" action:@selector(terminate:) keyEquivalent:@""];
+    [self rebuildStatusMenu];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [IMGSession anonymousSessionWithClientID:@"3daff0692988496" withDelegate:self];
+    
     self.query = [NSMetadataQuery new];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUpdated:) name:NSMetadataQueryDidStartGatheringNotification object:_query];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryUpdated:) name:NSMetadataQueryDidUpdateNotification object:_query];
@@ -48,10 +55,16 @@
     [self.query startQuery];
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
     
-    self.ownCloudUploader = [OwnCloudUploader new];
+//    self.ownCloudUploader = [OwnCloudUploader new];
     [self openPreferences:nil];
 
 }
+
+- (void)imgurSessionRateLimitExceeded {
+    
+}
+
+
 
 - (void)applicationWillTerminate:(NSNotification *)notification {
     [self.query stopQuery];
@@ -98,17 +111,47 @@ NSString *const kFocusedAdvancedControlIndex = @"FocusedAdvancedControlIndex";
     if ([notification.name isEqualToString:NSMetadataQueryDidUpdateNotification]) {
         NSMetadataItem *item =  [notification.userInfo[(NSString*)kMDQueryUpdateAddedItems] lastObject];
         if (!self.ownCloudUploader) {
-            self.ownCloudUploader = [OwnCloudUploader new];
+            self.ownCloudUploader = [ImgurUploader new];
         }
         
+        
         [self.statusItem setImage:[NSImage imageNamed:@"clouduploading"]];
-        [self.ownCloudUploader uploadImageToCloud:[item valueForAttribute:NSMetadataItemPathKey] imageName:[item valueForKey:NSMetadataItemFSNameKey] withCompletionBlock:^(NSString *shortenedURL) {
+        [self.ownCloudUploader uploadImageToCloud:[item valueForKey:NSMetadataItemPathKey] imageName:[item valueForKey:NSMetadataItemFSNameKey] withCompletionBlock:^(NSString *shortenedURL) {
+            [self rebuildStatusMenu];
+            [self displayLink:shortenedURL];
             [self.statusItem setImage:[NSImage imageNamed:@"cloudsuccess"]];
         } errorBlock:^(NSError *error) {
             [self.statusItem setImage:[NSImage imageNamed:@"clouderror"]];
+            [self displayError:error];
+            [self rebuildStatusMenu];
         }];
 
     }
+}
+
+- (void)displayError:(NSError *)error {
+    NSUserNotification *successNotification = [[NSUserNotification alloc] init];
+    successNotification.title = @"Cloudshot ERROR";
+    successNotification.informativeText = @"Something happened! Error pasted to clipboard";
+    successNotification.soundName = NSUserNotificationDefaultSoundName;
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:successNotification];
+    
+    NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
+    [pasteBoard declareTypes:@[NSStringPboardType] owner:nil];
+    [pasteBoard setString:error.description forType:NSStringPboardType];
+}
+
+- (void)displayLink:(NSString *)tinyURL {
+    NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
+    [pasteBoard declareTypes:@[NSStringPboardType] owner:nil];
+    [pasteBoard setString:tinyURL forType:NSStringPboardType];
+    
+    NSUserNotification *successNotification = [[NSUserNotification alloc] init];
+    successNotification.title = @"Cloudshot";
+    successNotification.informativeText = @"The link has been copied to your clipboard";
+    successNotification.soundName = NSUserNotificationDefaultSoundName;
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:successNotification];
+
 }
 
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification {
@@ -119,7 +162,33 @@ NSString *const kFocusedAdvancedControlIndex = @"FocusedAdvancedControlIndex";
     
 }
 
+- (void)shotClick:(id) sender {
+    Shot *shot = [sender representedObject];
+    NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
+    [pasteBoard declareTypes:@[NSStringPboardType] owner:nil];
+    [pasteBoard setString:shot.url forType:NSStringPboardType];
+    
+    NSUserNotification *successNotification = [[NSUserNotification alloc] init];
+    successNotification.title = @"Cloudshot";
+    successNotification.informativeText = @"The link has been copied to your clipboard";
+    successNotification.soundName = NSUserNotificationDefaultSoundName;
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:successNotification];
+}
 
-
+- (void)rebuildStatusMenu {
+    [self.statusMenu removeAllItems];
+    [self.statusMenu addItemWithTitle:@"Preferences" action:@selector(openPreferences:) keyEquivalent:@""];
+    [self.statusMenu addItem:[NSMenuItem separatorItem]];
+    
+    for (Shot *shot in [Shot fetchAll]) {
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:shot.name action:@selector(shotClick:) keyEquivalent:@""];
+        item.representedObject = shot;
+        [item setImage:[[NSImage alloc] initWithContentsOfFile:shot.imgPath]];
+        [self.statusMenu addItem:item];
+    }
+    
+    
+    [self.statusMenu addItemWithTitle:@"Quit Switcher" action:@selector(terminate:) keyEquivalent:@""];
+}
 
 @end

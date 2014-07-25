@@ -1,5 +1,5 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/Base64" "${PODS_ROOT}/Headers/FXKeychain" "${PODS_ROOT}/Headers/MASPreferences" "${PODS_ROOT}/Headers/RHPreferences" "${PODS_ROOT}/Headers/RaptureXML" $(SDKROOT)/usr/include/libxml2
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/AFNetworking" -isystem "${PODS_ROOT}/Headers/Base64" -isystem "${PODS_ROOT}/Headers/FXKeychain" -isystem "${PODS_ROOT}/Headers/MASPreferences" -isystem "${PODS_ROOT}/Headers/RHPreferences" -isystem "${PODS_ROOT}/Headers/RaptureXML"
-OTHER_LDFLAGS = -ObjC -lxml2 -lz -framework Cocoa -framework CoreServices -framework Security -framework SystemConfiguration
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/Base64" "${PODS_ROOT}/Headers/FXKeychain" "${PODS_ROOT}/Headers/ImgurSession" "${PODS_ROOT}/Headers/MASPreferences" "${PODS_ROOT}/Headers/RHPreferences" "${PODS_ROOT}/Headers/RaptureXML" $(SDKROOT)/usr/include/libxml2
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/AFNetworking" -isystem "${PODS_ROOT}/Headers/Base64" -isystem "${PODS_ROOT}/Headers/FXKeychain" -isystem "${PODS_ROOT}/Headers/ImgurSession" -isystem "${PODS_ROOT}/Headers/MASPreferences" -isystem "${PODS_ROOT}/Headers/RHPreferences" -isystem "${PODS_ROOT}/Headers/RaptureXML"
+OTHER_LDFLAGS = -ObjC -lxml2 -lz -framework Cocoa -framework CoreServices -framework Foundation -framework Security -framework SystemConfiguration
 PODS_ROOT = ${SRCROOT}/Pods

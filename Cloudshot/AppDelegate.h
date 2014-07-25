@@ -7,13 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <ImgurSession.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate, NSMetadataQueryDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate, NSMetadataQueryDelegate, IMGSessionDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 @property (nonatomic, strong) NSArray *queryResults;
 @property (strong, nonatomic) NSStatusItem *statusItem;
-@property (assign) IBOutlet NSMenu *statusMenu;
+@property (nonatomic, strong) NSMenu *statusMenu;
 
 @property (nonatomic, strong) NSWindowController *preferencesWindowController;
 

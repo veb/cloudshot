@@ -16,6 +16,11 @@ typedef void (^ErrorBlock)(NSError *error);
 @property (nonatomic, strong) CompletionBlock completionBlock;
 @property (nonatomic, strong) ErrorBlock errorBlock;
 
+@property (nonatomic, strong) NSString *localName;
+@property (nonatomic, strong) NSString *localThumbnailPath;
+
 - (void)uploadImageToCloud:(NSString *)imagePath imageName:(NSString *)destImageName withCompletionBlock:(CompletionBlock)completionBlock errorBlock:(ErrorBlock)errorBlock;
+
+- (void)createShotWithThumbPath:(NSString *)thumbPath localImageName:(NSString *)imageName remotePath:(NSString *)remotePath;
 
 @end
