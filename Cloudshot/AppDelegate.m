@@ -111,8 +111,8 @@ NSString *const kFocusedAdvancedControlIndex = @"FocusedAdvancedControlIndex";
     if ([notification.name isEqualToString:NSMetadataQueryDidUpdateNotification]) {
         NSMetadataItem *item =  [notification.userInfo[(NSString*)kMDQueryUpdateAddedItems] lastObject];
         if (!self.ownCloudUploader) {
-            self.ownCloudUploader = [ImgurUploader new];
-        }
+            self.ownCloudUploader = [OwnCloudUploader new];
+        }   
         
         
         [self.statusItem setImage:[NSImage imageNamed:@"clouduploading"]];

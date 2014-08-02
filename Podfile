@@ -1,5 +1,5 @@
 platform :osx, '10.9'
-
+pod 'Google-API-Client', '~> 0.1'
 pod 'RaptureXML', '~> 1.0'
 pod 'MASPreferences', '~> 1.1'
 pod 'RHPreferences', '~> 1.0'
