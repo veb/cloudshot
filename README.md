@@ -1,5 +1,10 @@
 cloudshot
 =========
+
+This is sort of like CloudApp.
+
+"CloudApp lets me share the screenshot in one action and I love that it automatically uploads the shortened URL to the clipboard"
+
 ---
 ##Installation
 ###Prerequisites
